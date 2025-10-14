@@ -1,0 +1,37 @@
+/* Estilos migrados do antigo NewPet.module.css */
+.cardNewPet {
+  position: relative;
+  min-height: 520px;
+}
+
+.subtitleNewPet {
+  color: #718096;
+  margin-bottom: 2rem;
+}
+
+.requiredInfo {
+  font-size: 0.95rem;
+  color: #b71c1c;
+  margin-bottom: 8px;
+}
+
+.requiredAsterisk {
+  color: red;
+}
+
+.formNewPet {
+  margin-top: 32px;
+  position: relative;
+}
+
+.textareaNewPet {
+  width: 100%;
+}
+
+.snackbarContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+  position: static;
+}

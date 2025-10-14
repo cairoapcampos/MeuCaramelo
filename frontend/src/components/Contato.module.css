@@ -1,0 +1,44 @@
+.contatoCard {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px #0001;
+  padding: 2rem;
+  margin: 2rem auto;
+  max-width: 420px;
+}
+
+.contatoForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.contatoSuccess {
+  color: #27ae60;
+  font-weight: bold;
+  text-align: center;
+  margin: 1.5rem 0;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.form-label {
+  font-weight: 500;
+  color: #333;
+}
+
+.form-input {
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 0.5rem 0.8rem;
+  font-size: 1rem;
+  outline: none;
+  transition: border 0.2s;
+}
+.form-input:focus {
+  border-color: #27ae60;
+}

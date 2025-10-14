@@ -1,0 +1,86 @@
+.petCard {
+  background: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 1px 4px #0001;
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 320px;
+  width: 100%;
+  min-width: 0;
+  overflow: hidden;
+}
+.petName,
+.petAge,
+.petCard div {
+  white-space: normal;
+  overflow: visible;
+  text-overflow: unset;
+  display: block;
+}
+.cardPets {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px #0001;
+  padding: 2.5rem 4vw;
+  margin: 2rem auto;
+  width: 100%;
+  max-width: 1800px;
+  min-width: 350px;
+  box-sizing: border-box;
+}
+
+.petsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+  margin-top: 1.5rem;
+  width: 100%;
+  justify-items: center;
+}
+
+.petCard {
+  background: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 1px 4px #0001;
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.petName {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #2d3748;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.petAge {
+  color: #718096;
+  font-size: 1rem;
+}
+
+.emptyPets {
+  text-align: center;
+  padding: 2rem;
+  color: #718096;
+}
+
+.emptyPetsTitle {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.errorTitle {
+  color: #e74c3c;
+}
+
+.errorText {
+  color: #e74c3c;
+  font-weight: bold;
+}

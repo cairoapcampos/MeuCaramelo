@@ -1,0 +1,14 @@
+.headerPointer {
+  cursor: pointer;
+  transition: filter 0.2s;
+}
+.headerPointer:hover {
+  filter: brightness(0.9);
+}
+
+.headerLogoIcon {
+  font-size: 2rem;
+  margin-right: 0.5rem;
+  display: inline-block;
+  vertical-align: middle;
+}

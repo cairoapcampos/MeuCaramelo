@@ -1,0 +1,32 @@
+.sobreCard {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px #0001;
+  padding: 2rem;
+  margin: 2rem auto;
+  max-width: 600px;
+}
+
+.sobreText {
+  font-size: 1.1rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.sobreTextSmall {
+  font-size: 1.1rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.sobreTextLast {
+  font-size: 1.1rem;
+  color: #333;
+  margin-bottom: 1.5rem;
+}
+
+.sobreCenter {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
