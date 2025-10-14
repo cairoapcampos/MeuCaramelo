@@ -1,3 +1,10 @@
+export async function apiRemovePet(id) {
+  await new Promise((r) => setTimeout(r, 10));
+  const index = petsDb.findIndex((p) => p.id === id);
+  if (index === -1) throw new Error("Pet não encontrado");
+  petsDb.splice(index, 1);
+  return true;
+}
 const petsDb = [
   {
     id: 1,

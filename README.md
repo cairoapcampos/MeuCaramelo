@@ -29,6 +29,7 @@ O Meu Caramelo é uma aplicação web simples para cadastro e gerenciamento de p
 
 - Node.js 22.20.0: Ambiente de execução JavaScript no lado servidor.
 - Express 5.1.0: Framework minimalista para criação de APIs REST.
+- Jest 30.2.0: Framework de testes automatizados para JavaScript.
 
 ## Instruções para executar o sistema:
 
@@ -137,3 +138,21 @@ http://localhost:4000/api/pets
 ```
 
 ![Back4-ok](/docs/back4_ok.png)
+
+## Rodando Testes Unitários no Backend
+
+1. Entre na pasta do backend do projeto.
+
+```
+cd MeuCaramelo/backend
+```
+
+2. Rode os testes.
+
+```
+npm run test
+```
+
+**Saída esperada:**
+
+![Back5-ok](/docs/back5_ok.png)
