@@ -1,4 +1,52 @@
-import { PetsService } from "../src/pets/pets.js";
+import { listPets, createPet, removePet } from "../src/pets/pets.js";
+describe("Funções exportadas diretamente", () => {
+  it("listPets deve retornar um array ordenado", async () => {
+    const pets = await listPets();
+    expect(Array.isArray(pets)).toBe(true);
+    if (pets.length > 1) {
+      const nomes = pets.map((p) => p.nome);
+      const nomesOrdenados = [...nomes].sort();
+      expect(nomes).toEqual(nomesOrdenados);
+    }
+  });
+
+  it("createPet deve criar um pet válido", async () => {
+    const novoPet = {
+      nome: "Bidu",
+      idade: 1,
+      tutor: "Teste",
+      telefone: "000",
+      endereco: "Rua Exportada",
+      raca: "Vira-lata",
+      observacoes: "Direto",
+    };
+    const petCriado = await createPet(novoPet);
+    expect(petCriado).toMatchObject(novoPet);
+    expect(petCriado).toHaveProperty("id");
+  });
+
+  it("removePet deve remover um pet existente", async () => {
+    const novoPet = await createPet({
+      nome: "Rex",
+      idade: 2,
+      tutor: "Teste",
+      telefone: "000",
+      endereco: "Rua Exportada",
+      raca: "Vira-lata",
+      observacoes: "Direto",
+    });
+    const id = novoPet.id;
+    const resultado = await removePet(id);
+    expect(resultado).toBe(true);
+    const pets = await listPets();
+    expect(pets.find((p) => p.id === id)).toBeUndefined();
+  });
+
+  it("createPet deve lançar erro se dados forem inválidos", async () => {
+    await expect(createPet({})).rejects.toThrow("Nome inválido");
+  });
+});
+import { Pet, PetsService } from "../src/pets/pets.js";
 
 describe("PetsService", () => {
   let petsService;
@@ -37,9 +85,7 @@ describe("PetsService", () => {
     });
 
     it("deve lançar erro se dados forem inválidos", async () => {
-      await expect(petsService.createPet({})).rejects.toThrow(
-        "Dados inválidos"
-      );
+      await expect(petsService.createPet({})).rejects.toThrow("Nome inválido");
     });
   });
 
@@ -66,5 +112,99 @@ describe("PetsService", () => {
         "Pet não encontrado"
       );
     });
+  });
+});
+
+describe("Pet", () => {
+  it("deve aceitar valores opcionais nulos", () => {
+    const pet = new Pet("Bob", 2);
+    expect(pet.nome).toBe("Bob");
+    expect(pet.idade).toBe(2);
+    expect(pet.tutor).toBeUndefined();
+    expect(pet.telefone).toBeUndefined();
+    expect(pet.endereco).toBeUndefined();
+    expect(pet.raca).toBeUndefined();
+    expect(pet.observacoes).toBeUndefined();
+  });
+
+  it("deve atualizar observações para vazio", () => {
+    p.atualizarObservacoes("");
+    expect(p.observacoes).toBe("");
+  });
+
+  it("deve atualizar observações para null", () => {
+    p.atualizarObservacoes(null);
+    expect(p.observacoes).toBe(null);
+  });
+  let p;
+
+  beforeEach(() => {
+    p = new Pet("Rex", 3, "João", "123", "Rua X", "Vira-lata", "Saudável");
+  });
+
+  afterEach(() => {
+    p = null;
+    console.log("O pet está " + p);
+  });
+
+  it("deve ser criado com os atributos corretos", () => {
+    expect(p.nome).toBe("Rex");
+    expect(p.idade).toBe(3);
+    expect(p.tutor).toBe("João");
+    expect(p.telefone).toBe("123");
+    expect(p.endereco).toBe("Rua X");
+    expect(p.raca).toBe("Vira-lata");
+    expect(p.observacoes).toBe("Saudável");
+  });
+
+  it("deve lançar erro se nome for vazio", () => {
+    expect(() => new Pet("", 2)).toThrow("Nome inválido");
+  });
+
+  it("deve lançar erro se nome não for string", () => {
+    expect(() => new Pet(123, 2)).toThrow("Nome inválido");
+  });
+
+  it("deve lançar erro se idade for negativa", () => {
+    expect(() => new Pet("Rex", -1)).toThrow("Idade inválida");
+  });
+
+  it("deve lançar erro se idade não for número", () => {
+    expect(() => new Pet("Rex", "dois")).toThrow("Idade inválida");
+  });
+
+  it("deve atualizar observações", () => {
+    p.atualizarObservacoes("Nova observação");
+    expect(p.observacoes).toBe("Nova observação");
+  });
+});
+
+describe("A lista de pets", () => {
+  let pets;
+
+  beforeAll(() => {
+    pets = [
+      new Pet("Rex", 3, "João", "123", "Rua X", "Vira-lata", "Saudável"),
+      new Pet("Bidu", 2, "Maria", "456", "Rua Y", "Poodle", "Alergia"),
+      new Pet("Thor", 1, "Pedro", "789", "Rua Z", "Pastor Alemão", "Saudável"),
+    ];
+  });
+
+  afterAll(() => {
+    pets = null;
+    console.log("A lista de pets está " + pets);
+  });
+
+  it("deve ter 3 pets na lista inicial", () => {
+    expect(pets.length).toBe(3);
+  });
+
+  it("deve ter Rex como primeiro elemento", () => {
+    expect(pets[0].nome).toBe("Rex");
+  });
+
+  it("deve conter um pet chamado Thor", () => {
+    const nomes = pets.map((p) => p.nome);
+    expect(nomes).toContain("Thor");
   });
 });
