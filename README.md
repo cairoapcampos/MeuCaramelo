@@ -155,4 +155,14 @@ npm run test
 
 **Saída esperada:**
 
-![Back5-ok](/docs/back5_ok.png)
+![Back5.2-ok](/docs/back5.2_ok.png)
+
+3. Visualizar a porcentagem do código coberta pelos testes.
+
+```
+npm run test:coverage
+```
+
+**Saída esperada:**
+
+![Back6-ok](/docs/back6_ok.png)
