@@ -1,13 +1,19 @@
 import React, { useEffect, useState } from "react";
-import { getPets } from "../services/api.js";
+import { getPets, removePet } from "../services/api.js";
 import styles from "./Pets.module.css";
 
 export default function Pets() {
   const [pets, setPets] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [deleteLoading, setDeleteLoading] = useState(false);
 
   useEffect(() => {
+    loadPets();
+  }, []);
+
+  const loadPets = () => {
+    setLoading(true);
     getPets()
       .then(setPets)
       .catch(() =>
@@ -16,7 +22,28 @@ export default function Pets() {
         )
       )
       .finally(() => setLoading(false));
-  }, []);
+  };
+
+  const handleDeletePet = async (id) => {
+    if (!confirm('Tem certeza que deseja remover este pet?')) {
+      return;
+    }
+
+    setDeleteLoading(true);
+    setError(""); // Limpa qualquer erro anterior
+    
+    try {
+      await removePet(id);
+      // Atualiza a lista após a remoção
+      loadPets();
+    } catch (err) {
+      console.error("Erro ao remover pet:", err);
+      setError(`Erro ao remover pet: ${err.message}`);
+      setLoading(false); // Garante que o estado de carregamento seja desativado em caso de erro
+    } finally {
+      setDeleteLoading(false);
+    }
+  };
 
   if (loading) {
     return (
@@ -52,6 +79,13 @@ export default function Pets() {
         <div className={styles.petsGrid}>
           {pets.map((pet) => (
             <div key={pet.id} className={styles.petCard}>
+              <button 
+                className={styles.deleteButton} 
+                onClick={() => handleDeletePet(pet.id)} 
+                title="Remover pet"
+              >
+                ✕
+              </button>
               <div className={styles.petName}>{pet.nome}</div>
               <div className={styles.petAge}>
                 🎂 {pet.idade} {pet.idade === 1 ? "ano" : "anos"} de idade

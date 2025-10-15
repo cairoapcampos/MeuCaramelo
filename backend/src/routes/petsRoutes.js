@@ -6,10 +6,11 @@
  */
 
 const { Router } = require("express");
-const { getPets, addPet } = require("../controllers/petsController");
+const { getPets, addPet, deletePet } = require("../controllers/petsController");
 
 const router = Router(); // Cria um novo roteador Express
 router.get("/", getPets);
 router.post("/", addPet);
+router.delete("/:id", deletePet);
 
 module.exports = router;

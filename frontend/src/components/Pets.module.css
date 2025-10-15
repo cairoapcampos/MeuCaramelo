@@ -10,6 +10,7 @@
   width: 100%;
   min-width: 0;
   overflow: hidden;
+  position: relative;
 }
 .petName,
 .petAge,
@@ -83,4 +84,26 @@
 .errorText {
   color: #e74c3c;
   font-weight: bold;
+}
+
+.deleteButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s;
+}
+
+.deleteButton:hover {
+  background-color: #c0392b;
 }
