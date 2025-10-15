@@ -1,6 +1,13 @@
-import express from "express";
-import petsRoutes from "./routes/petsRoutes.js";
-import cors from "cors";
+/**
+ * Arquivo principal da aplicação Express
+ *
+ * Configura o servidor Express com middlewares, rotas e tratamento de erros.
+ * Este é o ponto central da API que define como as requisições serão processadas.
+ */
+
+const express = require("express");
+const petsRoutes = require("./routes/petsRoutes");
+const cors = require("cors");
 
 const app = express();
 app.use(cors());
@@ -23,4 +30,4 @@ app.use((err, req, res, next) => {
   res.status(500).json({ error: "Erro interno no servidor" });
 });
 
-export default app;
+module.exports = app;

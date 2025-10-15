@@ -30,6 +30,7 @@ O Meu Caramelo é uma aplicação web simples para cadastro e gerenciamento de p
 - Node.js 22.20.0: Ambiente de execução JavaScript no lado servidor.
 - Express 5.1.0: Framework minimalista para criação de APIs REST.
 - Jest 30.2.0: Framework de testes automatizados para JavaScript.
+- Axios 1.12.2: Biblioteca utilizada para fazer requisições HTTP a APIs externas.
 
 ## Instruções para executar o sistema:
 
@@ -149,13 +150,33 @@ cd MeuCaramelo/backend
 
 2. Rode os testes.
 
+- Para visualizar todos os testes:
+
 ```
 npm run test
 ```
 
 **Saída esperada:**
 
-![Back5.2-ok](/docs/back5.2_ok.png)
+![Back7-ok](/docs/back7_ok.png)
+
+- Para visualizar os testes relacionados a cada arquivo:
+
+```
+npm run test pets
+```
+
+**Saída esperada:**
+
+![Back9-ok](/docs/back9_ok.png)
+
+```
+npm run test searchDogs
+```
+
+**Saída esperada:**
+
+![Back10-ok](/docs/back10_ok.png)
 
 3. Visualizar a porcentagem do código coberta pelos testes.
 
@@ -165,4 +186,4 @@ npm run test:coverage
 
 **Saída esperada:**
 
-![Back6-ok](/docs/back6_ok.png)
+![Back8-ok](/docs/back8_ok.png)

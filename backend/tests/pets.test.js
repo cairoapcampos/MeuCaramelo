@@ -1,4 +1,4 @@
-import { listPets, createPet, removePet } from "../src/pets/pets.js";
+const { listPets, createPet, removePet } = require("../src/pets/pets");
 describe("Funções exportadas diretamente", () => {
   it("listPets deve retornar um array ordenado", async () => {
     const pets = await listPets();
@@ -46,7 +46,8 @@ describe("Funções exportadas diretamente", () => {
     await expect(createPet({})).rejects.toThrow("Nome inválido");
   });
 });
-import { Pet, PetsService } from "../src/pets/pets.js";
+
+const { Pet, PetsService } = require("../src/pets/pets");
 
 describe("PetsService", () => {
   let petsService;
@@ -144,7 +145,6 @@ describe("Pet", () => {
 
   afterEach(() => {
     p = null;
-    console.log("O pet está " + p);
   });
 
   it("deve ser criado com os atributos corretos", () => {
@@ -192,7 +192,6 @@ describe("A lista de pets", () => {
 
   afterAll(() => {
     pets = null;
-    console.log("A lista de pets está " + pets);
   });
 
   it("deve ter 3 pets na lista inicial", () => {
