@@ -17,10 +17,10 @@ export default function NewPet() {
   const [form, setForm] = useState(initialForm);
   const [loading, setLoading] = useState(false);
   const [snackbar, setSnackbar] = useState({ open: false, message: "" });
-  const nomeRef = useRef(null);
+  const tutorRef = useRef(null);
 
   useEffect(() => {
-    if (nomeRef.current) nomeRef.current.focus();
+    if (tutorRef.current) tutorRef.current.focus();
   }, []);
 
   const handleChange = (e) =>
@@ -37,7 +37,7 @@ export default function NewPet() {
         message: `🎉 ${form.nome} cadastrado com sucesso!`,
       });
       setForm(initialForm);
-      if (nomeRef.current) nomeRef.current.focus();
+      if (tutorRef.current) tutorRef.current.focus();
     } catch (error) {
       setSnackbar({
         open: true,
@@ -75,6 +75,7 @@ export default function NewPet() {
             aria-required="true"
             aria-label="Nome do Tutor"
             autoComplete="off"
+            ref={tutorRef}
           />
         </div>
         {/* Endereço do Tutor */}
@@ -128,7 +129,6 @@ export default function NewPet() {
             required
             aria-required="true"
             aria-label="Nome do Pet"
-            ref={nomeRef}
             autoComplete="off"
           />
         </div>

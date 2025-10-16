@@ -187,3 +187,23 @@ npm run test:coverage
 **Saída esperada:**
 
 ![Back8-ok](/docs/back8_ok.png)
+
+4. Para executar os testes de aceitação.
+
+```
+cd ..
+```
+
+```
+pwd
+```
+
+**Obs:** Tenha certeza que está no diretório raiz "MeuCaramelo" do projeto.
+
+```
+npm run test:acceptance
+```
+
+**Saída esperada:**
+
+![Back11-ok](/docs/back11_ok.png)

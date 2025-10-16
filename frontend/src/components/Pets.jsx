@@ -10,6 +10,14 @@ export default function Pets() {
 
   useEffect(() => {
     loadPets();
+
+    // Hack para testes automatizados: expõe a função de remover no objeto window
+    if (typeof window !== "undefined") {
+      window.testRemovePet = (id) => {
+        console.log("Função de teste testRemovePet chamada com id:", id);
+        handleDeletePet(id);
+      };
+    }
   }, []);
 
   const loadPets = () => {
@@ -33,9 +41,11 @@ export default function Pets() {
     setError(""); // Limpa qualquer erro anterior
 
     try {
+      console.log(`Removendo pet com ID: ${id}`);
       await removePet(id);
       // Atualiza a lista após a remoção
       loadPets();
+      console.log(`Pet com ID ${id} removido com sucesso!`);
     } catch (err) {
       console.error("Erro ao remover pet:", err);
       setError(`Erro ao remover pet: ${err.message}`);
@@ -83,6 +93,8 @@ export default function Pets() {
                 className={styles.deleteButton}
                 onClick={() => handleDeletePet(pet.id)}
                 title="Remover pet"
+                data-testid={`delete-pet-${pet.id}`}
+                data-petname={pet.nome}
               >
                 ✕
               </button>
