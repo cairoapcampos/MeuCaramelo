@@ -1,0 +1,30 @@
+{
+  "name": "meucaramelo",
+  "version": "1.0.0",
+  "description": "**Site protótipo para estudos de integração entre frontend e backend (FullStack)**",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test:acceptance": "jest --testMatch='**/tests/acceptance/**/*.steps.js'",
+    "test:e2e": "jest --config=jest.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cairoapcampos/MeuCaramelo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cairoapcampos/MeuCaramelo/issues"
+  },
+  "homepage": "https://github.com/cairoapcampos/MeuCaramelo#readme",
+  "devDependencies": {
+    "@cucumber/gherkin": "^36.0.0",
+    "jest": "^30.2.0",
+    "jest-cucumber": "^4.5.0",
+    "puppeteer": "^24.25.0"
+  }
+}

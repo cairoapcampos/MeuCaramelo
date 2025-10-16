@@ -25,13 +25,13 @@ export default function Pets() {
   };
 
   const handleDeletePet = async (id) => {
-    if (!confirm('Tem certeza que deseja remover este pet?')) {
+    if (!confirm("Tem certeza que deseja remover este pet?")) {
       return;
     }
 
     setDeleteLoading(true);
     setError(""); // Limpa qualquer erro anterior
-    
+
     try {
       await removePet(id);
       // Atualiza a lista após a remoção
@@ -79,9 +79,9 @@ export default function Pets() {
         <div className={styles.petsGrid}>
           {pets.map((pet) => (
             <div key={pet.id} className={styles.petCard}>
-              <button 
-                className={styles.deleteButton} 
-                onClick={() => handleDeletePet(pet.id)} 
+              <button
+                className={styles.deleteButton}
+                onClick={() => handleDeletePet(pet.id)}
                 title="Remover pet"
               >
                 ✕
